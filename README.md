@@ -398,6 +398,12 @@ plt.axis('equal')
 plt.show()
 
 ```
+<br>
+<img width="527" height="450" alt="image" src="https://github.com/user-attachments/assets/bab69aca-96f2-47fe-8299-79806b66db6f" />
+<br>
+<img width="537" height="449" alt="image" src="https://github.com/user-attachments/assets/b604e6d1-b576-4bcf-a927-910d23c42cc8" />
+<br>
+
 Indices de CVI Y de CSI
 
 ```python
@@ -428,5 +434,10 @@ tabla = pd.DataFrame({
 })
 
 print(tabla)
+```
+<br>
+<img width="288" height="76" alt="image" src="https://github.com/user-attachments/assets/add7b31f-9c96-4bd9-87ea-9dba54ca58e0" />
+<br>
+
 
 ```
