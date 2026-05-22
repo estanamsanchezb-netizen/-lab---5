@@ -154,7 +154,13 @@ plt.show()
 <br>
 <img width="988" height="387" alt="image" src="https://github.com/user-attachments/assets/150d31cf-063d-4205-8e2f-f1a8c3bf3fd3" />
 
+<br>
+<img width="289" height="723" alt="image" src="https://github.com/user-attachments/assets/e1fde0b9-4695-4d94-af60-e276738c541c" />
 
 
 ## Parte B 
+Se realizó el preprocesamiento de la señal ECG adquirida, diseñando e implementando un filtro digital IIR para eliminar el ruido y los artefactos presentes en el registro, del cual se obtuvo su ecuación en diferencias aplicándolo con condiciones iniciales en cero. Una vez filtrada, la señal fue segmentada en dos bloques de dos minutos, uno correspondiente al reposo y otro a la lectura en voz alta, en cada uno de los cuales se detectaron los picos R y se calcularon los intervalos R-R para obtener la serie temporal. A partir de esta información se compararon la media y la desviación estándar de los intervalos R-R entre ambas condiciones, permitiendo observar diferencias en la variabilidad de la frecuencia cardíaca asociadas al balance autonómico en cada estado.
+
 ## Parte C 
+
+Se construyó el diagrama de Poincaré para cada segmento de señal, representando cada intervalo R-R frente al siguiente con el fin de visualizar la dispersión de la nube de puntos en cada condición. A partir de esta representación se calcularon los índices de actividad vagal (CVI) y simpática (CSI), lo que permitió comparar el balance autonómico entre el estado de reposo y la lectura en voz alta, evidenciando cómo la verbalización genera cambios en la dinámica de la variabilidad de la frecuencia cardíaca.
