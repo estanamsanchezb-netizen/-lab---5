@@ -155,7 +155,7 @@ plt.show()
 <img width="988" height="387" alt="image" src="https://github.com/user-attachments/assets/150d31cf-063d-4205-8e2f-f1a8c3bf3fd3" />
 
 <br>
- ### Conexión de los electrodos 
+  Conexión de los electrodos 
  <br>
  <img width="230" height="214" alt="image" src="https://github.com/user-attachments/assets/79b47ce8-0d87-49f4-9e24-4254dc701885" />
 <br>
