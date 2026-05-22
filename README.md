@@ -169,7 +169,7 @@ Se realizó el preprocesamiento de la señal ECG adquirida, diseñando e impleme
 
 Señal capturada :
 
-```
+```python
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -198,7 +198,8 @@ plt.show()
 
 ```
 División de la señal en segmentos de 2 minutos:
-```
+
+```python
 
 
 t = df["Tiempo(s)"]
@@ -231,7 +232,8 @@ plt.show()
 ```
 
 Identificación de los picos R y cálculo de los intervalos R-R.
-```
+
+```python
 
 def analizar_ecg(segmento, titulo):
 
@@ -309,7 +311,7 @@ RR_seg2.to_csv("RR_seg2.txt", sep="\t", index=False)
 ```
 
 Comparación de valores de los parámetros básicos:
-```
+``` python
 
 # SEGMENTO 1
 media_RR1 = np.mean(RR1)
@@ -347,7 +349,7 @@ Se construyó el diagrama de Poincaré para cada segmento de señal, representan
 
 
 Diagrama de Poincaré:
-```
+```python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -383,7 +385,7 @@ plt.show()
 ```
 Indices de CVI Y de CSI
 
-```
+```python
 
 def calcular_cvi_csi(RR):
     RR = np.array(RR)
