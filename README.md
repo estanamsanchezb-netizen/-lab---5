@@ -155,7 +155,8 @@ plt.show()
 <img width="988" height="387" alt="image" src="https://github.com/user-attachments/assets/150d31cf-063d-4205-8e2f-f1a8c3bf3fd3" />
 
 <br>
-<img width="289" height="723" alt="image" src="https://github.com/user-attachments/assets/e1fde0b9-4695-4d94-af60-e276738c541c" />
+
+<img width="204" height="518" alt="image" src="https://github.com/user-attachments/assets/ff52d205-9f84-4ae6-b541-61a39b2071ad" />
 
 
 ## Parte B 
