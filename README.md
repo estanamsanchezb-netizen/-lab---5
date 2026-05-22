@@ -233,7 +233,9 @@ plt.grid(True)
 plt.show()
 
 ```
-
+<br>
+<img width="896" height="591" alt="image" src="https://github.com/user-attachments/assets/aee7379c-ee4c-431f-b4a5-31468a44c193" />
+<br>
 Identificación de los picos R y cálculo de los intervalos R-R.
 
 ```python
@@ -312,7 +314,13 @@ RR_seg1.to_csv("RR_seg1.txt", sep="\t", index=False)
 RR_seg2.to_csv("RR_seg2.txt", sep="\t", index=False)
 
 ```
-
+<br>
+<img width="889" height="542" alt="image" src="https://github.com/user-attachments/assets/4bbb5419-0ab0-4670-a81c-302faef1eb05" />
+<br>
+<img width="933" height="344" alt="image" src="https://github.com/user-attachments/assets/c517ce03-ef0a-4e1c-9d4f-5e5d4f4084ed" />
+<br>
+<img width="790" height="313" alt="image" src="https://github.com/user-attachments/assets/6f4f7b00-83e3-43b0-b56a-0f34da76df42" />
+<br>
 Comparación de valores de los parámetros básicos:
 ``` python
 
@@ -344,7 +352,9 @@ tabla = pd.DataFrame({
 print(tabla)
 
 ```
-
+<br>
+<img width="250" height="115" alt="image" src="https://github.com/user-attachments/assets/5ba463f6-57a4-4b87-9346-3fa7a13bb13a" />
+<br>
 
 ## Parte C 
 
