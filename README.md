@@ -155,7 +155,9 @@ plt.show()
 <img width="988" height="387" alt="image" src="https://github.com/user-attachments/assets/150d31cf-063d-4205-8e2f-f1a8c3bf3fd3" />
 
 <br>
-
+ ### Conexión de los electrodos 
+ <img width="230" height="214" alt="image" src="https://github.com/user-attachments/assets/79b47ce8-0d87-49f4-9e24-4254dc701885" />
+<br>
 <img width="204" height="518" alt="image" src="https://github.com/user-attachments/assets/ff52d205-9f84-4ae6-b541-61a39b2071ad" />
 
 
@@ -357,7 +359,14 @@ print(tabla)
 <br>
 <img width="250" height="115" alt="image" src="https://github.com/user-attachments/assets/5ba463f6-57a4-4b87-9346-3fa7a13bb13a" />
 <br>
-
+ ### Calculos 
+ <br>
+<img width="1270" height="1599" alt="image" src="https://github.com/user-attachments/assets/5fd381b3-94b3-4370-ae29-cf8c97a241a3" />
+<br>
+<img width="1138" height="605" alt="image" src="https://github.com/user-attachments/assets/1a9fa11e-6857-4963-8256-2a5578a36212" />
+<br>
+<img width="180" height="847" alt="image" src="https://github.com/user-attachments/assets/64e49970-ca08-426e-a127-713087907c86" />
+<br>
 ## Parte C 
 
 Se construyó el diagrama de Poincaré para cada segmento de señal, representando cada intervalo R-R frente al siguiente con el fin de visualizar la dispersión de la nube de puntos en cada condición. A partir de esta representación se calcularon los índices de actividad vagal (CVI) y simpática (CSI), lo que permitió comparar el balance autonómico entre el estado de reposo y la lectura en voz alta, evidenciando cómo la verbalización genera cambios en la dinámica de la variabilidad de la frecuencia cardíaca.
@@ -439,5 +448,6 @@ print(tabla)
 <img width="288" height="76" alt="image" src="https://github.com/user-attachments/assets/add7b31f-9c96-4bd9-87ea-9dba54ca58e0" />
 <br>
 A partir de los valores obtenidos se pueden observar diferencias claras entre los dos segmentos. El SD1 disminuyó considerablemente del segmento 1 al segmento 2, pasando de 14.84 ms a 6.65 ms, lo que indica una reducción en la variabilidad latido a latido asociada a menor actividad parasimpática durante la lectura. El SD2 en cambio aumentó de 31.76 ms a 27.18 ms, reflejando una mayor dispersión longitudinal en el segundo segmento. En cuanto al CSI, aumentó de 2.14 a 4.09, lo que sugiere un incremento en la actividad simpática durante la lectura en voz alta. El CVI se mantuvo relativamente estable entre ambas condiciones, con valores de 2.67 y 2.26, indicando que la actividad vagal no presentó cambios tan marcados. En conjunto, estos resultados son coherentes con lo esperado fisiológicamente, ya que la lectura en voz alta activa el sistema simpático y reduce la influencia parasimpática en comparación con el estado de reposo.
+<br>
+<img width="218" height="681" alt="image" src="https://github.com/user-attachments/assets/7abdcc7d-b963-4295-a9e0-72d7a9a57815" />
 
-```
