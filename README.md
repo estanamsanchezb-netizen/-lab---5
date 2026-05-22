@@ -197,6 +197,9 @@ plt.show()
 
 
 ```
+<br>
+<img width="1125" height="386" alt="image" src="https://github.com/user-attachments/assets/3977f3fd-8244-4ce2-8c8b-11985f4361ce" />
+<br>
 División de la señal en segmentos de 2 minutos:
 
 ```python
