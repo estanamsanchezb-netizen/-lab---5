@@ -162,6 +162,254 @@ plt.show()
 ## Parte B 
 Se realizó el preprocesamiento de la señal ECG adquirida, diseñando e implementando un filtro digital IIR para eliminar el ruido y los artefactos presentes en el registro, del cual se obtuvo su ecuación en diferencias aplicándolo con condiciones iniciales en cero. Una vez filtrada, la señal fue segmentada en dos bloques de dos minutos, uno correspondiente al reposo y otro a la lectura en voz alta, en cada uno de los cuales se detectaron los picos R y se calcularon los intervalos R-R para obtener la serie temporal. A partir de esta información se compararon la media y la desviación estándar de los intervalos R-R entre ambas condiciones, permitiendo observar diferencias en la variabilidad de la frecuencia cardíaca asociadas al balance autonómico en cada estado.
 
+*CALCULOS*
+*ECUACION DEL FLTRO*
+
+
+
+Señal capturada :
+
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+
+archivo = "/content/ECG_tomado.txt"
+
+
+df = pd.read_csv(
+    archivo,
+    delim_whitespace=True,
+    skiprows=1,
+    names=["Tiempo", "Voltaje"]
+)
+
+
+plt.figure(figsize=(15,5))
+plt.plot(df["Tiempo"], df["Voltaje"], linewidth=1)
+
+plt.title("ECG Filtrado")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Voltaje (V)")
+plt.grid(True)
+
+plt.show()
+
+
+
+```
+División de la señal en segmentos de 2 minutos:
+```
+
+
+t = df["Tiempo(s)"]
+ecg = df["Voltaje(V)"]
+
+# Segmento 1: 0 - 120 s
+seg1 = df[df["Tiempo(s)"] < 120]
+
+# Segmento 2: 120 - 240 s
+seg2 = df[df["Tiempo(s)"] >= 120]
+
+
+plt.figure(figsize=(15,5))
+plt.plot(seg1["Tiempo(s)"], seg1["Voltaje(V)"])
+plt.title("ECG - Primeros 2 minutos (Reposo)")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Voltaje (V)")
+plt.grid(True)
+plt.show()
+
+
+plt.figure(figsize=(15,5))
+plt.plot(seg2["Tiempo(s)"], seg2["Voltaje(V)"])
+plt.title("ECG - Segundos 2 minutos (Lectura)")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Voltaje (V)")
+plt.grid(True)
+plt.show()
+
+```
+
+Identificación de los picos R y cálculo de los intervalos R-R.
+```
+
+def analizar_ecg(segmento, titulo):
+
+    t = segmento["Tiempo(s)"].values
+    ecg = segmento["Voltaje(V)"].values
+
+    fs = 1/np.mean(np.diff(t))
+
+    # Detectar picos R
+    peaks, _ = find_peaks(
+        ecg,
+        distance=int(0.4*fs),
+        prominence=0.3
+    )
+
+    t_R = t[peaks]
+    amp_R = ecg[peaks]
+
+    RR = np.diff(t_R)
+    RR_ms = RR*1000
+
+  
+    # ECG con picos R
+
+    plt.figure(figsize=(15,5))
+    plt.plot(t, ecg)
+    plt.plot(t_R, amp_R, 'ro')
+    plt.title(f'Picos R - {titulo}')
+    plt.xlabel('Tiempo (s)')
+    plt.ylabel('Voltaje (V)')
+    plt.grid(True)
+    plt.show()
+
+
+    # Señal RR
+
+    plt.figure(figsize=(12,4))
+    plt.plot(t_R[1:], RR_ms, '-o')
+    plt.title(f'Serie RR - {titulo}')
+    plt.xlabel('Tiempo (s)')
+    plt.ylabel('RR (ms)')
+    plt.grid(True)
+    plt.show()
+
+    print(f"\n{titulo}")
+    print("Latidos detectados:", len(t_R))
+    print("Intervalos RR:", len(RR_ms))
+    print("RR promedio =", np.mean(RR_ms), "ms")
+
+    return t_R, RR_ms
+
+
+# SEGMENTO 1
+tR1, RR1 = analizar_ecg(seg1, "SEGMENTO 1")
+
+
+# SEGMENTO 2
+tR2, RR2 = analizar_ecg(seg2, "SEGMENTO 2")
+
+
+
+RR_seg1 = pd.DataFrame({
+    "Tiempo_R(s)": tR1[1:],
+    "RR(ms)": RR1
+})
+
+RR_seg2 = pd.DataFrame({
+    "Tiempo_R(s)": tR2[1:],
+    "RR(ms)": RR2
+})
+
+RR_seg1.to_csv("RR_seg1.txt", sep="\t", index=False)
+RR_seg2.to_csv("RR_seg2.txt", sep="\t", index=False)
+
+```
+
+Comparación de valores de los parámetros básicos:
+```
+
+# SEGMENTO 1
+media_RR1 = np.mean(RR1)
+sdnn1 = np.std(RR1, ddof=1)
+
+# SEGMENTO 2
+media_RR2 = np.mean(RR2)
+sdnn2 = np.std(RR2, ddof=1)
+
+print("SEGMENTO 1")
+print("Media RR =", media_RR1, "ms")
+print("SDNN =", sdnn1, "ms")
+
+print("\nSEGMENTO 2")
+print("Media RR =", media_RR2, "ms")
+print("SDNN =", sdnn2, "ms")
+
+
+import pandas as pd
+
+tabla = pd.DataFrame({
+    "Parámetro":["Media RR (ms)", "SDNN (ms)"],
+    "Segmento 1":[media_RR1, sdnn1],
+    "Segmento 2":[media_RR2, sdnn2]
+})
+
+print(tabla)
+
+```
+
+
 ## Parte C 
 
 Se construyó el diagrama de Poincaré para cada segmento de señal, representando cada intervalo R-R frente al siguiente con el fin de visualizar la dispersión de la nube de puntos en cada condición. A partir de esta representación se calcularon los índices de actividad vagal (CVI) y simpática (CSI), lo que permitió comparar el balance autonómico entre el estado de reposo y la lectura en voz alta, evidenciando cómo la verbalización genera cambios en la dinámica de la variabilidad de la frecuencia cardíaca.
+
+
+Diagrama de Poincaré:
+```
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+# SEGMENTO 1
+
+RRn_1 = RR1[:-1]
+RRn1_1 = RR1[1:]
+
+plt.figure(figsize=(6,6))
+plt.scatter(RRn_1, RRn1_1)
+plt.xlabel("RR(n) [ms]")
+plt.ylabel("RR(n+1) [ms]")
+plt.title("Diagrama de Poincaré - Segmento 1")
+plt.grid(True)
+plt.axis('equal')
+plt.show()
+
+
+# SEGMENTO 2
+RRn_2 = RR2[:-1]
+RRn1_2 = RR2[1:]
+
+plt.figure(figsize=(6,6))
+plt.scatter(RRn_2, RRn1_2)
+plt.xlabel("RR(n) [ms]")
+plt.ylabel("RR(n+1) [ms]")
+plt.title("Diagrama de Poincaré - Segmento 2")
+plt.grid(True)
+plt.axis('equal')
+plt.show()
+
+```
+Indices de CVI Y de CSI
+
+```
+
+def calcular_cvi_csi(RR):
+    RR = np.array(RR)
+
+    RRn = RR[:-1]
+    RRn1 = RR[1:]
+
+    diff = RRn1 - RRn
+
+    SD1 = np.sqrt(0.5) * np.std(diff, ddof=1)
+    SD2 = np.sqrt(2*np.std(RR, ddof=1)**2 - 0.5*np.std(diff, ddof=1)**2)
+
+    CSI = SD2 / SD1
+    CVI = np.log10(SD1 * SD2)
+
+    return SD1, SD2, CSI, CVI
+
+SD1_1, SD2_1, CSI_1, CVI_1 = calcular_cvi_csi(RR1)
+SD1_2, SD2_2, CSI_2, CVI_2 = calcular_cvi_csi(RR2)
+
+tabla = pd.DataFrame({
+    "Parámetro": ["SD1", "SD2", "CSI", "CVI"],
+    "Segmento 1": [SD1_1, SD2_1, CSI_1, CVI_1],
+    "Segmento 2": [SD1_2, SD2_2, CSI_2, CVI_2]
+})
+
+print(tabla)
+
+```
