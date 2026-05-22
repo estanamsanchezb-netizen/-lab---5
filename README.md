@@ -438,6 +438,6 @@ print(tabla)
 <br>
 <img width="288" height="76" alt="image" src="https://github.com/user-attachments/assets/add7b31f-9c96-4bd9-87ea-9dba54ca58e0" />
 <br>
-
+A partir de los valores obtenidos se pueden observar diferencias claras entre los dos segmentos. El SD1 disminuyó considerablemente del segmento 1 al segmento 2, pasando de 14.84 ms a 6.65 ms, lo que indica una reducción en la variabilidad latido a latido asociada a menor actividad parasimpática durante la lectura. El SD2 en cambio aumentó de 31.76 ms a 27.18 ms, reflejando una mayor dispersión longitudinal en el segundo segmento. En cuanto al CSI, aumentó de 2.14 a 4.09, lo que sugiere un incremento en la actividad simpática durante la lectura en voz alta. El CVI se mantuvo relativamente estable entre ambas condiciones, con valores de 2.67 y 2.26, indicando que la actividad vagal no presentó cambios tan marcados. En conjunto, estos resultados son coherentes con lo esperado fisiológicamente, ya que la lectura en voz alta activa el sistema simpático y reduce la influencia parasimpática en comparación con el estado de reposo.
 
 ```
