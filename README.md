@@ -236,6 +236,7 @@ plt.show()
 <br>
 <img width="896" height="591" alt="image" src="https://github.com/user-attachments/assets/aee7379c-ee4c-431f-b4a5-31468a44c193" />
 <br>
+
 Identificación de los picos R y cálculo de los intervalos R-R.
 
 ```python
@@ -321,6 +322,7 @@ RR_seg2.to_csv("RR_seg2.txt", sep="\t", index=False)
 <br>
 <img width="790" height="313" alt="image" src="https://github.com/user-attachments/assets/6f4f7b00-83e3-43b0-b56a-0f34da76df42" />
 <br>
+
 Comparación de valores de los parámetros básicos:
 ``` python
 
